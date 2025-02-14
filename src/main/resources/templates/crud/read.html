@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Read Products</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div th:insert="~{header.html}"></div>
+<main>
+    <h1>Product List</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+        <tbody>
+        <tr th:each="product: ${products}">
+            <td th:text="${product.getId()}"></td>
+            <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getDescription()}"></td>
+            <td th:text="${product.getPrice()}"></td>
+            <td th:text="${product.getStock()}"></td>
+            <td>
+                <a th:href="@{/update/{id}(id=${product.id})}">Edit</a>
+                <a th:href="@{/delete/{id}(id=${product.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+<div th:insert="~{footer.html}"></div>
+</body>
+</html>
